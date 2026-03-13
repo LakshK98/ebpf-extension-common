@@ -17,6 +17,7 @@ TEST_CASE("init_rundown", "[rundown]")
 
     // Clean up: wait for rundown so it can be torn down.
     ebpf_ext_wait_for_rundown(&rundown);
+    REQUIRE(rundown.rundown_occurred == true);
 }
 
 TEST_CASE("enter_leave_rundown", "[rundown]")
@@ -33,6 +34,7 @@ TEST_CASE("enter_leave_rundown", "[rundown]")
 
     // Clean up.
     ebpf_ext_wait_for_rundown(&rundown);
+    REQUIRE(rundown.rundown_occurred == true);
 }
 
 TEST_CASE("enter_after_rundown_fails", "[rundown]")
